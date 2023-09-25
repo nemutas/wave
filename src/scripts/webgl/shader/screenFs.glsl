@@ -67,9 +67,13 @@ void main() {
   vec3 scaler = vec3(length(velo));
 
   vec2 uv = (vUv - 0.5) * uCoveredScale + 0.5;
-  vec3 image = texture2D(tImage, uv - velo * 0.3).rgb;
 
-  vec3 final = mix(image, scaler * 5.0, float(uDebug));
+  float r = texture2D(tImage, uv - velo * 0.3 * 1.0).r;
+  float g = texture2D(tImage, uv - velo * 0.3 * 1.4).g;
+  float b = texture2D(tImage, uv - velo * 0.3 * 1.8).b;
+  vec3 color = vec3(r, g, b);
+
+  vec3 final = mix(color, scaler * 5.0, float(uDebug));
 
   gl_FragColor = vec4(final, 1.0);
 }
