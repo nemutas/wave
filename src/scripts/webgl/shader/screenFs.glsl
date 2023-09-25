@@ -54,7 +54,7 @@ void main() {
 
   for(int i = 0; i < SIZE; i++) {
     Wave data = uWaves[i];
-    if (0.9999 < data.progress) break;
+    if (0.9999999 < data.progress) break;
     
     velo += wave(centeredUv, data);
     count += 1;
