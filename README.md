@@ -1,5 +1,5 @@
 # About
 
-https://nemutas.github.io/rune/
+https://nemutas.github.io/wave/
 
-<img src='https://github.com/nemutas/rune/assets/46724121/b18a4a4e-eea3-4681-930f-10de9b49cdaa' alt='' width='700' />
+<img src='https://github.com/nemutas/wave/assets/46724121/b69e9289-6981-44b9-8144-ec462fb2dbbc' alt='' width='700' />
