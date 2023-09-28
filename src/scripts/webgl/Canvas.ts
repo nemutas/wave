@@ -5,10 +5,10 @@ import vertexShader from './shader/quadVs.glsl'
 import fragmentShader from './shader/screenFs.glsl'
 import { gui } from './Gui'
 
-type Wave = { position: [number, number]; progress: number }
+type Wave = { position: [number, number]; progress: number; direction: [number, number] }
 
 export class Canvas {
-  private readonly SIZE = 500
+  private readonly SIZE = 200
   private wave!: THREE.Mesh<THREE.BufferGeometry, THREE.RawShaderMaterial>
 
   constructor(canvas: HTMLCanvasElement) {
@@ -41,7 +41,7 @@ export class Canvas {
   private createWave(texture: THREE.Texture) {
     const waves: Wave[] = []
     for (let i = 0; i < this.SIZE; i++) {
-      waves.push({ position: [0, 0], progress: 1 })
+      waves.push({ position: [0, 0], progress: 1, direction: [0, 0] })
     }
 
     const fs = fragmentShader.replaceAll('SIZE', this.SIZE.toFixed(0))
@@ -79,11 +79,13 @@ export class Canvas {
 
   private anime = () => {
     const waves = this.wave.material.uniforms.uWaves.value as Wave[]
+    const velo = mouse2d.velocity()
 
-    if (0.001 < Math.hypot(...mouse2d.velocity())) {
+    if (0.001 < Math.hypot(...velo)) {
       const wave = waves.pop()!
       wave.position = mouse2d.posArray
       wave.progress = 0
+      wave.direction = velo
       waves.unshift(wave)
     }
 

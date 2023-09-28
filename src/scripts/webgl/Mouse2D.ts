@@ -32,7 +32,7 @@ class Mouse2D {
     return a * (1 - t) + b * t
   }
 
-  velocity(t = 0.1) {
+  velocity(t = 0.1): [number, number] {
     this.current.x = this.lerp(this.position.x, this.current.x, t)
     this.current.y = this.lerp(this.position.y, this.current.y, t)
     return [this.position.x - this.current.x, this.position.y - this.current.y]
